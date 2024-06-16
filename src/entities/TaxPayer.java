@@ -60,5 +60,5 @@ public class TaxPayer {
         this.educationSpending = educationSpending;
     }
 
-    
+
 }
