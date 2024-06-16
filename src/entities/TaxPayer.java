@@ -60,5 +60,37 @@ public class TaxPayer {
         this.educationSpending = educationSpending;
     }
 
+    public double salaryTax(){
+        double monthlySalary = salaryIncome / 12;
+        if (monthlySalary < 3000.00) {
+            return 0.0;
+        } else if (monthlySalary < 5000.00) {
+            return salaryIncome * 0.10;
+        } else {
+            return salaryIncome * 0.20;
+        }
+    }
+
+    public double servicesTax() {
+        return servicesIncome * 0.15;
+    }
+
+    public double capitalTax() {
+        return capitalIncome * 0.20;
+    }
+
+    public double grossTax() {
+        return salaryTax() + servicesTax() + capitalTax();
+    }
+
+    public double taxRebate() {
+        double maxRebate = grossTax() * 0.30;
+        double actualRebate = healthSpending + educationSpending;
+        return Math.min(actualRebate, maxRebate);
+    }
+
+    public double netTax() {
+        return grossTax() - taxRebate();
+    }
 
 }
